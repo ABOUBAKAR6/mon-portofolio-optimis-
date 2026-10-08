@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aboubakar Ouedraogo · Développeur web & logiciel</title>
+<meta name="description" content="Portfolio d'Aboubakar Ouedraogo, développeur web et logiciel à Abidjan, admissible au BTS Informatique et Développement d'Applications.">
+<link rel="stylesheet" href="./css/styles.css?v=20261007">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js",
+    "three/examples/jsm/loaders/SVGLoader.js": "./vendor/SVGLoader.js"
+  }
+}
+</script>
+</head>
+<body>
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <span class="loader-value"><span id="loader-count">00</span><span class="loader-unit">%</span></span>
+    <span class="loader-bar"><span id="loader-fill"></span></span>
+    <span class="loader-hint">Chargement</span>
+  </div>
+</div>
+<script>
+(function () {
+  var el = document.getElementById('loader'), count = document.getElementById('loader-count'), fill = document.getElementById('loader-fill');
+  var start = performance.now(), ready = false, rampAt = 0, shownAtRamp = 0, shown = 0, finished = false;
+  var MIN_HOLD = 0, RAMP = 180;   // ms: minimum time on screen, then the run to 100
+  document.body.classList.add('is-loading');
+  function finish() {
+    if (finished) return;
+    finished = true;
+    count.textContent = '100';
+    fill.style.transform = 'scaleX(1)';
+    el.classList.add('is-done');
+    document.body.classList.remove('is-loading');
+    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 900);
+  }
+  function tick(now) {
+    if (finished) return;
+    if (ready && !rampAt && now - start >= MIN_HOLD) { rampAt = now; shownAtRamp = shown; }
+    if (rampAt) {
+      var k = Math.min(1, (now - rampAt) / RAMP);
+      shown = shownAtRamp + (100 - shownAtRamp) * (1 - Math.pow(1 - k, 3));
+    } else {
+      // Time-based pseudo progress while the modules and the scene are prepared.
+      shown = 92 * (1 - Math.exp(-(now - start) / 1600));
+    }
+    count.textContent = String(Math.round(shown)).padStart(2, '0');
+    fill.style.transform = 'scaleX(' + (shown / 100) + ')';
+    if (rampAt && shown >= 99.5) { finish(); return; }
+    requestAnimationFrame(tick);
+  }
+  window.__glassLoader = { done: function () { ready = true; } };
+  requestAnimationFrame(tick);
+  setTimeout(function () { window.__glassLoader.done(); }, 15000);   // never trap the visitor
+  setTimeout(finish, 17000);
+})();
+</script>
+<div class="cursor-inner"></div>
+<div class="cursor-outer"><span class="cursor-ticks"><span></span><span></span><span></span><span></span></span></div>
+<div class="cursor-label" aria-hidden="true">000</div>
+<div class="cinematic-container">
+<div class="main-header">
+  <a class="brand" href="#slide-1">
+    <span class="brand-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 482"><path fill-rule="evenodd" fill="#e9b440" d="M173,373 L140,384 L105,392 L75,395 L53,394 L4,474 L2,481 L99,481 L147,398 Z M343,285 L343,290 L405,409 L340,469 L331,480 L542,480 L538,469 L417,246 Z M592,153 L555,156 L522,162 L482,172 L439,186 L339,225 L185,293 L117,319 L76,328 L60,328 L49,324 L44,318 L43,310 L53,287 L80,253 L122,216 L120,214 L70,245 L39,270 L22,287 L9,305 L2,320 L0,329 L1,345 L5,353 L16,363 L29,369 L47,373 L80,374 L96,372 L147,360 L189,344 L255,312 L387,237 L461,199 L537,168 L592,155 Z M281,0 L278,0 L212,100 L102,282 L88,310 L144,294 L188,276 L267,136 L311,220 L389,190 L349,114 Z "/></svg></span>
+    <span class="brand-text">ABOUBAKAR</span>
+  </a>
+  <nav class="header-nav" aria-label="Chapitres">
+    <a href="#slide-1" class="nav-link is-active">Accueil</a>
+    <a href="#slide-2" class="nav-link">Profil</a>
+    <a href="#slide-3" class="nav-link">Compétences</a>
+    <a href="#slide-4" class="nav-link">Parcours</a>
+    <a href="#projets" class="nav-link">Projets</a>
+  </nav>
+  <div class="header-actions">
+    <span class="header-counter" aria-hidden="true"><span id="brand-chapter">01</span><span class="counter-sep"></span>05</span>
+    <a href="./assets/cv/CV-Aboubakar-Ouedraogo.pdf" download="CV-Aboubakar-Ouedraogo.pdf" class="contact-btn cv-btn" aria-label="Télécharger mon CV (PDF)">Mon CV <span class="btn-arrow cv-arrow">&#8595;</span></a>
+    <a href="#contact" class="contact-btn">Contact <span class="btn-arrow">&#8599;</span></a>
+  </div>
+</div>
+
+<div class="slide" id="slide-1">
+  <h2 class="slide-title">Je code le web <br>et vos logiciels</h2>
+  <div class="desc-row">
+    <p class="slide-desc col-1">Développeur web et logiciel à Abidjan, admissible au BTS Informatique et Développement d'Applications. Je cherche un stage pour mettre mon code au service de votre équipe.</p>
+  </div>
+</div>
+
+<div class="slide" id="slide-2">
+  <h2 class="slide-title">Étudiant à Pigier <br>Abidjan, Adjamé</h2>
+  <p class="slide-desc">En licence Réseaux & Génie Logiciel chez Pigier Côte d'Ivoire, après un BTS IDA. Organisé, à l'aise en équipe et rapide à m'adapter, je passe mon temps libre entre l'intelligence artificielle, les nouvelles technologies et les animés.</p>
+</div>
+
+<div class="slide" id="slide-3">
+  <h2 class="slide-title">Mes compétences <br>techniques</h2>
+  <ul class="benefits">
+    <li class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg></span><p>Applications web en PHP, Laravel, Inertia et React.</p></li>
+    <li class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="8.5" width="11" height="8" rx="1.8"/><path d="M7.2 8.5V6.6a2.8 2.8 0 0 1 5.6 0v1.9"/></svg></span><p>Bases de données SQL : conception, requêtes, gestion.</p></li>
+    <li class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 3.6a4 4 0 0 0-5 5L3.6 13.4a1.7 1.7 0 0 0 2.4 2.4l4.8-4.8a4 4 0 0 0 5-5l-2.3 2.3-2-.5-.5-2 2.4-2.2z"/></svg></span><p>Algorithmique et programmation en C et Pascal.</p></li>
+    <li class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16h14"/><path d="M6 16V9m4 7V5m4 11v-5"/></svg></span><p>Bureautique avancée : Word, et Excel certifié Microsoft.</p></li>
+  </ul>
+</div>
+
+<div class="slide" id="slide-4">
+  <h2 class="slide-title">Mon parcours <br>en chiffres</h2>
+  <p class="slide-desc">Admissible au BTS IDA, en licence Réseaux & Génie Logiciel chez Pigier. Trois projets web livrés, de la page vitrine à la boutique en ligne.</p>
+  <dl class="figures">
+    <div class="figure"><dt><span class="figure-value" data-count="3" data-decimals="0">3</span></dt><dd>projets web<br>conçus et livrés</dd></div>
+    <div class="figure"><dt><span class="figure-value" data-count="8" data-decimals="0">8</span></dt><dd>langages<br>et frameworks</dd></div>
+    <div class="figure"><dt><span class="figure-value" data-count="2016" data-decimals="0">2016</span></dt><dd>certifié<br>Microsoft Excel</dd></div>
+  </dl>
+</div>
+</div>
+
+<div class="scroll-stage" aria-hidden="true"></div>
+<section class="projects" id="projets" aria-labelledby="projets-title">
+  <div class="projects-head">
+    <p class="contact-eyebrow"><span class="eyebrow-dot"></span>Projets</p>
+    <h2 class="projects-title" id="projets-title">Mes projets <span class="muted">en mouvement</span></h2>
+  </div>
+  <div class="reel">
+    <div class="reel-stage">
+      <canvas aria-hidden="true"></canvas>
+      <div class="afritex-gallery" aria-label="Captures de la boutique AfriTex">
+        <img class="afritex-shot is-active" src="./assets/afritex/afritex-06-home.png" alt="Accueil de la boutique AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-08-popular.png" alt="Produits populaires AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-05-catalogue.png" alt="Catalogue des tissus AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-03-categories.png" alt="Catégories de tissus AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-02-product.png" alt="Fiche produit AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-07-360.png" alt="Produit 360 Premium AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-09-checkout.png" alt="Commande et livraison AfriTex" />
+        <img class="afritex-shot" src="./assets/afritex/afritex-01-footer.png" alt="Pied de page AfriTex" />
+      </div>
+      <div class="gallery-progress"><span></span></div>
+    </div>
+    <div class="reel-text">
+      <article class="reel-item" data-shape="bag" data-hue="#e9b440" style="--hue:#e9b440">
+        <p class="project-kind">Boutique en ligne</p>
+        <h3 class="project-name">Afritex</h3>
+        <p class="project-desc">Une boutique de tissus africains, du catalogue à la commande. Laravel côté serveur, Inertia et React côté interface, avec une expérience motion design.</p>
+        <ul class="project-tags"><li>Laravel</li><li>Inertia</li><li>React</li><li>Motion design</li></ul>
+      </article>
+      <article class="reel-item" data-shape="drop" data-hue="#e2364b" style="--hue:#e2364b">
+        <p class="project-kind">Sensibilisation santé</p>
+        <h3 class="project-name">Stop paludisme</h3>
+        <p class="project-desc">Page web de sensibilisation contre le paludisme, conçue et développée en projet de fin de semestre.</p>
+        <ul class="project-tags"><li>Page web</li><li>Fin de semestre</li></ul>
+      </article>
+      <article class="reel-item" data-shape="bridge" data-hue="#4d8cff" style="--hue:#4d8cff">
+        <p class="project-kind">Application de gestion</p>
+        <h3 class="project-name">Ponts à péage</h3>
+        <p class="project-desc">Application web dynamique de gestion des ponts à péage en Côte d'Ivoire, réalisée en projet scolaire.</p>
+        <ul class="project-tags"><li>Web dynamique</li><li>Gestion</li><li>Projet scolaire</li></ul>
+      </article>
+      <div class="reel-controls">
+        <div class="reel-dashes"><button class="reel-dash" type="button" aria-label="Afritex"><span></span></button><button class="reel-dash" type="button" aria-label="Stop paludisme"><span></span></button><button class="reel-dash" type="button" aria-label="Ponts à péage"><span></span></button></div>
+        <div class="reel-buttons">
+          <button class="reel-btn reel-prev" type="button" aria-label="Projet précédent">&#8592;</button>
+          <button class="reel-btn reel-pause" type="button" aria-label="Pause"><span class="i-pause"></span></button>
+          <button class="reel-btn reel-next" type="button" aria-label="Projet suivant">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-inner">
+    <div class="contact-intro">
+      <p class="contact-eyebrow"><span class="eyebrow-dot"></span>Contact / 05</p>
+      <h2 class="contact-title" id="contact-title"><span class="line"><span class="line-inner">Un stage à</span></span><span class="line muted"><span class="line-inner">me proposer ?</span></span></h2>
+      <p class="contact-lead">Écrivez-moi, appelez le <a class="contact-link" href="tel:+2250769488328">07 69 48 83 28</a><br>ou <a class="contact-link" href="https://wa.me/2250769488328" target="_blank" rel="noopener">discutons sur WhatsApp&nbsp;&#8599;</a></p>
+      <a class="contact-mail" href="mailto:ouedraogo6948@gmail.com">ouedraogo6948@gmail.com <span class="arrow">&#8599;</span></a>
+    </div>
+    <form class="contact-card" id="contact-form" data-email="ouedraogo6948@gmail.com">
+      <div class="card-head"><span>Votre message</span><span class="arrow">&#8599;</span></div>
+      <div class="field-grid">
+        <label class="field"><span class="field-label">Votre nom <em>*</em></span><input type="text" name="name" placeholder="Nom et prénom" autocomplete="name" required></label>
+        <label class="field"><span class="field-label">Votre e-mail <em>*</em></span><input type="email" name="email" placeholder="vous@entreprise.com" autocomplete="email" required></label>
+        <label class="field field-wide"><span class="field-label">Entreprise <small>optionnel</small></span><input type="text" name="company" placeholder="Nom de l'entreprise" autocomplete="organization"></label>
+        <label class="field field-wide"><span class="field-label">Votre message <em>*</em></span><textarea name="project" rows="4" placeholder="Le poste, le projet, vos attentes…" required></textarea></label>
+      </div>
+      <div class="card-foot">
+        <p class="card-note">Votre messagerie s'ouvrira<br>avec le message prêt à envoyer.</p>
+        <button type="submit" class="pill-btn"><span class="btn-label">Préparer mon e-mail</span> <span class="arrow">&#8599;</span></button>
+      </div>
+    </form>
+  </div>
+  <footer class="contact-footer">
+    <span>&copy; 2026 &mdash; ABOUBAKAR</span>
+    <span class="footer-spec">Three.js · WebGL 2 · 100 % temps réel</span>
+    <a href="#slide-1" class="footer-top">Haut de page <span aria-hidden="true">&uarr;</span></a>
+  </footer>
+</section>
+<div class="grid-horizontal-line"></div>
+<div class="header-progress" aria-hidden="true"><span id="header-progress-fill"></span></div>
+<div class="story-progress" aria-hidden="true">
+  <div class="story-dashes">
+    <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+    <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+    <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+    <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+  </div>
+</div>
+<canvas id="webgl"></canvas>
+<script type="module" src="./js/app.js?v=20261007"></script>
+</body>
+</html>
